@@ -10,15 +10,16 @@ const nextId = (products: InitialStateType[]) => {
   return maxNumber + 1;
 };
 
-const reducer = (state = initialState, action: ActionType) => {
+const productReducer = (state = initialState, action: ActionType) => {
   switch (action.type) {
     case ADD:
-      const { title, imgUrl, quantity, price } = action.payload;
+      const { title, imgUrl, quantity, price, category } = action.payload;
       return [
         ...state,
         {
           id: nextId(state),
           title,
+          category,
           imgUrl,
           quantity,
           price,
@@ -27,10 +28,10 @@ const reducer = (state = initialState, action: ActionType) => {
 
     case ADDTOCART:
       return state.find((product) => {
-        if (product.id === action.payload) {
+        if (product.id === action.payload.id) {
           return {
             ...product,
-            quantity: product.quantity - 1,
+            quantity: Number(product.quantity) - 1,
           };
         }
         return state;
@@ -40,4 +41,4 @@ const reducer = (state = initialState, action: ActionType) => {
   }
 };
 
-export default reducer;
+export default productReducer;

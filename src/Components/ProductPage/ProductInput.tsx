@@ -1,12 +1,63 @@
-import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+
+import { FormEvent, useState } from "react";
+import { add } from "../../redux/products/actions";
 
 type Props = {};
 
 const ProductInput = (props: Props) => {
+  const dispatch = useDispatch();
+  const [product, setProduct] = useState({
+    title: " ",
+    category: " ",
+    imgUrl: " ",
+    price: 0,
+    quantity: 0,
+  });
+
+  const handleFormSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    dispatch(add(product));
+    setProduct({
+      title: " ",
+      category: " ",
+      imgUrl: " ",
+      price: 0,
+      quantity: 0,
+    });
+  };
+
+  const inputHandler = (
+    productType: string,
+    e: FormEvent<HTMLInputElement>
+  ) => {
+    if (productType === "price" || productType === "quantity") {
+      console.log("mello");
+      setProduct({
+        ...product,
+        [productType]: Number((e.target as HTMLInputElement).value),
+      });
+    } else if (
+      productType === "title" ||
+      productType === "category" ||
+      productType === "imgUrl"
+    ) {
+      console.log("hello");
+      setProduct({
+        ...product,
+        [productType]: (e.target as HTMLInputElement).value,
+      });
+    }
+  };
+
   return (
     <div className="formContainer">
       <h4 className="formTitle">Add New Product</h4>
-      <form className="space-y-4 text-[#534F4F]" id="lws-addProductForm">
+      <form
+        className="space-y-4 text-[#534F4F]"
+        id="lws-addProductForm"
+        onSubmit={handleFormSubmit}
+      >
         {/* <!-- product name --> */}
         <div className="space-y-2">
           <label htmlFor="lws-inputName">Product Name</label>
@@ -14,7 +65,9 @@ const ProductInput = (props: Props) => {
             className="addProductInput"
             id="lws-inputName"
             type="text"
+            value={product?.title}
             required
+            onChange={(e) => inputHandler("title", e)}
           />
         </div>
         {/* <!-- product category --> */}
@@ -24,7 +77,9 @@ const ProductInput = (props: Props) => {
             className="addProductInput"
             id="lws-inputCategory"
             type="text"
+            value={product?.category}
             required
+            onChange={(e) => inputHandler("category", e)}
           />
         </div>
         {/* <!-- product image url --> */}
@@ -34,7 +89,9 @@ const ProductInput = (props: Props) => {
             className="addProductInput"
             id="lws-inputImage"
             type="text"
+            value={product?.imgUrl}
             required
+            onChange={(e) => inputHandler("imgUrl", e)}
           />
         </div>
         {/* <!-- price & quantity container --> */}
@@ -47,6 +104,8 @@ const ProductInput = (props: Props) => {
               type="number"
               id="lws-inputPrice"
               required
+              value={product?.price}
+              onChange={(e) => inputHandler("price", e)}
             />
           </div>
           {/* <!-- quantity --> */}
@@ -57,6 +116,8 @@ const ProductInput = (props: Props) => {
               type="number"
               id="lws-inputQuantity"
               required
+              value={product?.quantity}
+              onChange={(e) => inputHandler("quantity", e)}
             />
           </div>
         </div>

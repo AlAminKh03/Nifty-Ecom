@@ -8,9 +8,10 @@ export interface ActionType {
 export interface PayloadType {
   id?: number;
   title?: string;
+  category?: string;
   imgUrl?: string;
-  quantity?: number;
-  price?: number;
+  quantity?: number | string;
+  price?: number | string;
 }
 
 export const add = (product: PayloadType) => {
