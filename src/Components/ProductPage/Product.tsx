@@ -5,7 +5,10 @@ interface ProductProps {
 }
 
 const Product = ({ product }: ProductProps) => {
-  const { title, category, imgUrl, price, quantity } = product;
+  const { id, title, category, imgUrl, price, quantity } = product;
+  const handleCart = (productId: number) => {
+    
+  };
   return (
     <div className="lws-productCard">
       <img className="lws-productImage" src={imgUrl} alt="product" />
@@ -20,7 +23,9 @@ const Product = ({ product }: ProductProps) => {
             QTY <span className="lws-quantity">{quantity}</span>
           </p>
         </div>
-        <button className="lws-btnAddToCart">Add To Cart</button>
+        <button className="lws-btnAddToCart" onClick={() => handleCart(id)}>
+          Add To Cart
+        </button>
       </div>
     </div>
   );
