@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 
 import { FormEvent, useState } from "react";
-import { add } from "../../redux/products/actions";
+import { addProduct } from "../../redux/products/actions";
 
 type Props = {};
 
@@ -17,7 +17,7 @@ const ProductInput = (props: Props) => {
 
   const handleFormSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    dispatch(add(product));
+    dispatch(addProduct(product));
     setProduct({
       title: " ",
       category: " ",

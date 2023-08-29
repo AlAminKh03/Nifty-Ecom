@@ -1,29 +1,45 @@
-import { ADD, ADDTOCART } from "./actionTypes";
+import {
+  ADD_PRODUCT,
+  ADD_PRODUCT_QUANTITY,
+  REMOVE_PRODUCT_QUANTITY,
+  ADD_MANY_QUANTITY,
+} from "./actionTypes";
 
 export interface ActionType {
   type: string;
-  payload: PayloadType;
+  payload: payloadType;
 }
-
-export interface PayloadType {
+export interface payloadType {
   id?: number;
-  title?: string;
-  category?: string;
-  imgUrl?: string;
-  quantity?: number | string;
-  price?: number | string;
+  title: string;
+  category: string;
+  price: number;
+  quantity: number;
+  imgUrl: string;
 }
-
-export const add = (product: PayloadType) => {
+export const addProduct = (product: payloadType) => {
   return {
-    type: ADD,
+    type: ADD_PRODUCT,
     payload: product,
   };
 };
 
-export const addToCart = (id: number) => {
+export const addProductQuantity = (id: number) => {
   return {
-    type: ADDTOCART,
-    payload: id,
+    type: ADD_PRODUCT_QUANTITY,
+    payload: { id },
+  };
+};
+
+export const removeProductQuantity = (id: number) => {
+  return {
+    type: REMOVE_PRODUCT_QUANTITY,
+    payload: { id },
+  };
+};
+export const addManyQuantity = (productId: number) => {
+  return {
+    type: ADD_MANY_QUANTITY,
+    payload: { productId },
   };
 };

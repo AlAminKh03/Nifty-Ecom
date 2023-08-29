@@ -3,7 +3,7 @@ export interface InitialStateType {
   title: string;
   category: string;
   imgUrl: string;
-  quantity: number | string;
+  quantity: number;
   price: number | string;
 }
 
