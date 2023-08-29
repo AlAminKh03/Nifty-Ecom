@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux";
 import { InitialStateType } from "../../redux/products/initialState";
 import { removeProductQuantity } from "../../redux/products/actions";
+import { addCart } from "../../redux/cart/action";
 
 interface ProductProps {
   product: InitialStateType;
@@ -9,8 +10,8 @@ interface ProductProps {
 const Product = ({ product }: ProductProps) => {
   const { id, title, category, imgUrl, price, quantity } = product;
   const dispatch = useDispatch();
-  const handleCart = (productId: number) => {
-    dispatch(removeProductQuantity(productId));
+  const handleCart = () => {
+    dispatch(addCart(product));
   };
   return (
     <div className="lws-productCard">
@@ -29,7 +30,7 @@ const Product = ({ product }: ProductProps) => {
         <button
           disabled={quantity <= 0}
           className="lws-btnAddToCart"
-          onClick={() => handleCart(id)}
+          onClick={handleCart}
         >
           Add To Cart
         </button>

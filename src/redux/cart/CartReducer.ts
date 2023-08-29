@@ -1,7 +1,7 @@
 import { ActionTypes, PayloadType } from "./action";
 import { ADD_TO_CART, REMOVE_FROM_CART, DELETE_ITEM } from "./actionTypes";
 
-const isExist = (state: any[], payload: PayloadType) =>
+const isExist = (state: PayloadType[], payload: PayloadType) =>
   state.some((item) => item.id === payload.id);
 
 const initialState: PayloadType[] = [];
@@ -14,6 +14,8 @@ const cartReducer = (state = initialState, action: ActionTypes) => {
     // add product to cart
     case ADD_TO_CART:
       if (isExist(state, payload)) {
+        console.log(payload);
+        console.log(state);
         if (payload.quantity <= 0) {
           return state;
         }

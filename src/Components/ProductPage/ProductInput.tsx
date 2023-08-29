@@ -13,6 +13,7 @@ const ProductInput = (props: Props) => {
     imgUrl: " ",
     price: 0,
     quantity: 0,
+    cartQuantity: 0,
   });
 
   const handleFormSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -24,6 +25,7 @@ const ProductInput = (props: Props) => {
       imgUrl: " ",
       price: 0,
       quantity: 0,
+      cartQuantity: 0,
     });
   };
 

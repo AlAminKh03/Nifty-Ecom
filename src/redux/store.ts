@@ -19,7 +19,7 @@ const productManagementMiddleware: Middleware =
     console.log(action);
     switch (action.type) {
       case ADD_TO_CART:
-        store.dispatch(removeProductQuantity(action.payload));
+        store.dispatch(removeProductQuantity(action.payload.id));
         return next(action);
 
       case REMOVE_FROM_CART:

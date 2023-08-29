@@ -7,6 +7,7 @@ type Props = {
 };
 const Navbar = ({ setIsCartPage }: Props) => {
   const carts = useSelector((state: RootState) => state.carts);
+  console.log(carts);
   const cartItem = carts.reduce(
     (totalItem, item) => item.cartQuantity + totalItem,
     0

@@ -25,20 +25,24 @@ const productReducer = (state = initialState, action: ActionType) => {
       return copiedState;
 
     case ADD_PRODUCT_QUANTITY:
+      console.log("from add");
       return copiedState.map((item) =>
         item.id === action.payload.id
           ? { ...item, quantity: item.quantity + 1 }
           : item
       );
     case REMOVE_PRODUCT_QUANTITY:
+      console.log("from remove");
       if (action.payload.quantity <= 0) {
         return state;
       } else {
-        return copiedState.map((item) =>
-          item.id === action.payload.id
-            ? { ...item, quantity: item.quantity - 1 }
-            : item
-        );
+        return copiedState.map((item) => {
+          if (item.id === action.payload.id) {
+            console.log(item);
+            return { ...item, quantity: item.quantity - 1 };
+          }
+          return item;
+        });
       }
     case ADD_MANY_QUANTITY:
       return copiedState.map((item) =>
