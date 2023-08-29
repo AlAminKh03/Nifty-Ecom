@@ -1,4 +1,8 @@
-import { Middleware, legacy_createStore as createStore } from "redux";
+import {
+  Middleware,
+  legacy_createStore as createStore,
+  applyMiddleware,
+} from "redux";
 
 import rootReducer from "./rootReducer";
 import {
@@ -7,9 +11,12 @@ import {
   removeProductQuantity,
 } from "./products/actions";
 import { ADD_TO_CART, DELETE_ITEM, REMOVE_FROM_CART } from "./cart/actionTypes";
+import { composeWithDevTools } from "redux-devtools-extension";
 
 const productManagementMiddleware: Middleware =
   (store) => (next) => (action) => {
+    console.log(store);
+    console.log(action);
     switch (action.type) {
       case ADD_TO_CART:
         store.dispatch(removeProductQuantity(action.payload));
@@ -27,6 +34,9 @@ const productManagementMiddleware: Middleware =
     }
   };
 
-const store = createStore(rootReducer);
+const store = createStore(
+  rootReducer,
+  composeWithDevTools(applyMiddleware(productManagementMiddleware))
+);
 
 export default store;

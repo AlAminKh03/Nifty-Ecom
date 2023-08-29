@@ -1,9 +1,16 @@
+import { useSelector } from "react-redux";
 import logo from "../assets/images/logo.png";
+import { RootState } from "./Homepage";
 
 type Props = {
   setIsCartPage: React.Dispatch<React.SetStateAction<boolean>>;
 };
 const Navbar = ({ setIsCartPage }: Props) => {
+  const carts = useSelector((state: RootState) => state.carts);
+  const cartItem = carts.reduce(
+    (totalItem, item) => item.cartQuantity + totalItem,
+    0
+  );
   return (
     <nav className="bg-[#171C2A] py-4">
       <div className="navBar">
@@ -28,7 +35,7 @@ const Navbar = ({ setIsCartPage }: Props) => {
             id="lws-cart"
           >
             <i className="text-xl fa-sharp fa-solid fa-bag-shopping"></i>
-            <span id="lws-totalCart">0</span>
+            <span id="lws-totalCart">{cartItem}</span>
           </a>
         </div>
       </div>

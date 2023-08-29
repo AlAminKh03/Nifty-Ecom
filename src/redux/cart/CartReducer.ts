@@ -4,7 +4,7 @@ import { ADD_TO_CART, REMOVE_FROM_CART, DELETE_ITEM } from "./actionTypes";
 const isExist = (state: any[], payload: PayloadType) =>
   state.some((item) => item.id === payload.id);
 
-const initialState: PayloadType[] = [{}];
+const initialState: PayloadType[] = [];
 
 const cartReducer = (state = initialState, action: ActionTypes) => {
   const copiedState = [...state];

@@ -7,6 +7,7 @@ export interface ActionTypes extends ActionType {
 
 export interface PayloadType extends payloadType {
   cartQuantity: number;
+  total: number;
 }
 
 export const addCart = (product: PayloadType) => {

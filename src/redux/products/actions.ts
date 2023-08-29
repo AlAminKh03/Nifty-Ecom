@@ -16,6 +16,7 @@ export interface payloadType {
   price: number;
   quantity: number;
   imgUrl: string;
+  cartQuantity: number;
 }
 export const addProduct = (product: payloadType) => {
   return {
@@ -37,9 +38,9 @@ export const removeProductQuantity = (id: number) => {
     payload: { id },
   };
 };
-export const addManyQuantity = (productId: number) => {
+export const addManyQuantity = (id: number) => {
   return {
     type: ADD_MANY_QUANTITY,
-    payload: { productId },
+    payload: { id },
   };
 };

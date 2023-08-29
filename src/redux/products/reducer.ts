@@ -24,33 +24,28 @@ const productReducer = (state = initialState, action: ActionType) => {
       copiedState.push(newProduct);
       return copiedState;
 
-    case REMOVE_PRODUCT_QUANTITY:
-      return copiedState.map((product) => {
-        console.log(action.payload);
-        if (product.id === action.payload.id) {
-          return {
-            ...product,
-            quantity: product.quantity - 1,
-          };
-        } else {
-          return product;
-        }
-      });
     case ADD_PRODUCT_QUANTITY:
-      return copiedState.map((product) => {
-        console.log(product);
-        if (product.id === action.payload.id) {
-          return {
-            ...product,
-            quantity: product.quantity + 1,
-          };
-        } else {
-          return product;
-        }
-      });
-
+      return copiedState.map((item) =>
+        item.id === action.payload.id
+          ? { ...item, quantity: item.quantity + 1 }
+          : item
+      );
+    case REMOVE_PRODUCT_QUANTITY:
+      if (action.payload.quantity <= 0) {
+        return state;
+      } else {
+        return copiedState.map((item) =>
+          item.id === action.payload.id
+            ? { ...item, quantity: item.quantity - 1 }
+            : item
+        );
+      }
     case ADD_MANY_QUANTITY:
-
+      return copiedState.map((item) =>
+        item.id === action.payload.id
+          ? { ...item, quantity: item.quantity + action.payload.cartQuantity }
+          : item
+      );
     default:
       return state;
   }
