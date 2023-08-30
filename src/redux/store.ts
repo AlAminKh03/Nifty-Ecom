@@ -15,15 +15,15 @@ import { composeWithDevTools } from "redux-devtools-extension";
 
 const productManagementMiddleware: Middleware =
   (store) => (next) => (action) => {
-    console.log(store);
-    console.log(action);
     switch (action.type) {
       case ADD_TO_CART:
+        console.log(action.payload);
         store.dispatch(removeProductQuantity(action.payload.id));
         return next(action);
 
       case REMOVE_FROM_CART:
-        store.dispatch(addProductQuantity(action.payload));
+        console.log(action.payload);
+        store.dispatch(addProductQuantity(action.payload.id));
         return next(action);
 
       case DELETE_ITEM:

@@ -1,6 +1,5 @@
 import { useDispatch } from "react-redux";
 import { InitialStateType } from "../../redux/products/initialState";
-import { removeProductQuantity } from "../../redux/products/actions";
 import { addCart } from "../../redux/cart/action";
 
 interface ProductProps {

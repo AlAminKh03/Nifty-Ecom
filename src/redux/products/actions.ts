@@ -38,9 +38,9 @@ export const removeProductQuantity = (id: number) => {
     payload: { id },
   };
 };
-export const addManyQuantity = (id: number) => {
+export const addManyQuantity = (product: payloadType) => {
   return {
     type: ADD_MANY_QUANTITY,
-    payload: { id },
+    payload: product,
   };
 };
