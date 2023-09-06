@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import logo from "../assets/images/logo.png";
+
 import { RootState } from "./Homepage";
 
 type Props = {
@@ -16,7 +16,7 @@ const Navbar = ({ setIsCartPage }: Props) => {
     <nav className="bg-[#171C2A] py-4">
       <div className="navBar">
         <a onClick={() => setIsCartPage(false)} href="#">
-          <img src={logo} alt="LWS" className="max-w-[140px]" />
+          <h1 className="font-5xl font-bold">Nifty E-com</h1>
         </a>
 
         <div className="flex gap-4">
