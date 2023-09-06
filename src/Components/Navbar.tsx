@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 
 import { RootState } from "./Homepage";
+import { AiOutlineShoppingCart } from "react-icons/ai";
 
 type Props = {
   setIsCartPage: React.Dispatch<React.SetStateAction<boolean>>;
@@ -15,8 +16,13 @@ const Navbar = ({ setIsCartPage }: Props) => {
   return (
     <nav className="bg-[#171C2A] py-4">
       <div className="navBar">
-        <a onClick={() => setIsCartPage(false)} href="#">
-          <h1 className="font-5xl font-bold">Nifty E-com</h1>
+        <a onClick={() => setIsCartPage(false)} href="#" className="">
+          <h1
+            style={{ color: "white", fontSize: "20px" }}
+            className=" font-bold"
+          >
+            Nifty E-com
+          </h1>
         </a>
 
         <div className="flex gap-4">
@@ -35,7 +41,7 @@ const Navbar = ({ setIsCartPage }: Props) => {
             className="navCart"
             id="lws-cart"
           >
-            <i className="text-xl fa-sharp fa-solid fa-bag-shopping"></i>
+            <AiOutlineShoppingCart className=" w-10 h-10" />
             <span id="lws-totalCart">{cartItem}</span>
           </a>
         </div>

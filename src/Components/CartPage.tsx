@@ -1,13 +1,10 @@
-import React from "react";
 import Cart from "./Cart/Cart";
 import BillDetails from "./Cart/BillDetails";
 import { useSelector } from "react-redux";
 import { PayloadType } from "../redux/cart/action";
 import { RootState } from "./Homepage";
 
-type Props = {};
-
-const CartPage = (props: Props) => {
+const CartPage = () => {
   const carts: PayloadType[] = useSelector((state: RootState) => state.carts);
 
   return (

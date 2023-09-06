@@ -7,7 +7,7 @@ interface ProductProps {
 }
 
 const Product = ({ product }: ProductProps) => {
-  const { id, title, category, imgUrl, price, quantity } = product;
+  const { title, category, imgUrl, price, quantity } = product;
   const dispatch = useDispatch();
   const handleCart = () => {
     dispatch(addCart(product));

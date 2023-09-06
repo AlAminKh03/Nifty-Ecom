@@ -1,10 +1,7 @@
-import React from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../Homepage";
 
-type Props = {};
-
-const BillDetails = (props: Props) => {
+const BillDetails = () => {
   const carts = useSelector((state: RootState) => state.carts);
   const total = carts.reduce(
     (total, cart) => cart.price * cart.cartQuantity + total,

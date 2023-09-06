@@ -1,4 +1,3 @@
-import React from "react";
 import ProductInput from "./ProductPage/ProductInput";
 import Product from "./ProductPage/Product";
 import { InitialStateType } from "../redux/products/initialState";

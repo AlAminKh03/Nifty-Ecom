@@ -11,7 +11,7 @@ interface CartType {
 }
 
 const Cart = ({ cart }: CartType) => {
-  const { id, cartQuantity, price, title, category, imgUrl } = cart;
+  const { cartQuantity, price, title, category, imgUrl } = cart;
   const dispatch = useDispatch();
   console.log(cart);
   const total = price * cartQuantity;
@@ -30,9 +30,8 @@ const Cart = ({ cart }: CartType) => {
   return (
     <div>
       {/* <!-- Navbar ends --> */}
-      <main className="py-16">
+      <main className="py-6">
         <div className="container 2xl:px-8 px-2 mx-auto">
-          <h2 className="mb-8 text-xl font-bold">Shopping Cart</h2>
           <div className="  w-[800px]">
             <div className="space-y-6">
               {/* <!-- Cart Item --> */}

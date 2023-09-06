@@ -1,11 +1,9 @@
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import { FormEvent, useState } from "react";
 import { addProduct } from "../../redux/products/actions";
 
-type Props = {};
-
-const ProductInput = (props: Props) => {
+const ProductInput = () => {
   const dispatch = useDispatch();
   const [product, setProduct] = useState({
     title: " ",
